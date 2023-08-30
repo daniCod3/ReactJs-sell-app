@@ -1,7 +1,15 @@
-export default function Guitar({guitar, addToCart}) {
+type Guitar = {
+    id: number
+    name: string
+    image: string
+    description: string
+    price: number
+}
 
-    const { id, name, image, description, price } = guitar
+export default function Guitar({guitar, addToCart} : {guitar : Guitar, addToCart : (item: Guitar) => void
+}) {
 
+    const { name, image, description, price } = guitar
 
     return (
         <div className="col-md-6 col-lg-4 my-4 row align-items-center">

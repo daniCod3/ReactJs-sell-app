@@ -27,16 +27,16 @@ export const useCart = () => {
             updatedCart[itemExists].quantity++
             setCart(updatedCart)
         } else {
-            item.quantity = 1
-            setCart([...cart, item])
+            const newItem : CartItem = {...item, quantity : 1}
+            setCart([...cart, newItem])
         }
     }
 
-    function removeFromCart(id) {
+    function removeFromCart(id : Guitar['id']) {
         setCart(prevCart => prevCart.filter(guitar => guitar.id !== id))
     }
 
-    function decreaseQuantity(id) {
+    function decreaseQuantity(id : Guitar['id']) {
         const updatedCart = cart.map( item => {
             if(item.id === id && item.quantity > MIN_ITEMS) {
                 return {
@@ -49,7 +49,7 @@ export const useCart = () => {
         setCart(updatedCart)
     }
 
-    function increaseQuantity(id) {
+    function increaseQuantity(id : Guitar['id']) {
         const updatedCart = cart.map( item => {
             if(item.id === id && item.quantity < MAX_ITEMS) {
                 return {
@@ -62,7 +62,7 @@ export const useCart = () => {
         setCart(updatedCart)
     }
 
-    function clearCart(e) {
+    function clearCart() {
         setCart([])
     }
 
